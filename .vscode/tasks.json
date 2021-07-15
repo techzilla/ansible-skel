@@ -1,0 +1,30 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "options": {
+        "env": {
+            "REQ": "dev"
+        }
+    },
+    "tasks": [
+        {
+            "label": "Install Hooks",
+            "type": "shell",
+            "command": "pre-commit install -f --install-hooks",
+            "problemMatcher": [],
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+            "dependsOn": [
+                "Init Python"
+            ]
+        },
+        {
+            "label": "Init Python",
+            "type": "shell",
+            "command": "scripts/venv.sh",
+            "problemMatcher": []
+        }
+    ]
+}
