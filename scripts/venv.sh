@@ -72,7 +72,7 @@ if ! venv_check; then
     if ! venv_activate; then
 
         if venv_create && venv_activate; then
-            "$PIP" install -U setuptools
+            "$PIP" install -U pip setuptools wheel
             "$PIP" install -r requirements.txt
 
             if [ -n "$REQ" ]; then

@@ -11,7 +11,7 @@
         {
             "label": "Install Hooks",
             "type": "shell",
-            "command": "pre-commit install -f --install-hooks",
+            "command": ". scripts/venv.sh && pre-commit install -f --install-hooks",
             "problemMatcher": [],
             "runOptions": {
                 "runOn": "folderOpen"
