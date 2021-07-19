@@ -7,7 +7,7 @@
     exit 0
 }
 
-ansible-lint --exclude=required-roles -R -r tools/ansible-lint-rules "$@" || {
+ansible-lint "$@" || {
     echo "lint fail:"
     exit 1
 }

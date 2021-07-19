@@ -72,11 +72,11 @@ if ! venv_check; then
     if ! venv_activate; then
 
         if venv_create && venv_activate; then
-            "$PIP" install -U pip setuptools
-            "$PIP" install -U -r requirements.txt
+            "$PIP" install -U setuptools
+            "$PIP" install -r requirements.txt
 
             if [ -n "$REQ" ]; then
-                "$PIP" install -U -r requirements-"$REQ".txt
+                "$PIP" install -r requirements-"$REQ".txt
 
             fi
             echo "INFO: venv created"
@@ -87,6 +87,7 @@ if ! venv_check; then
             return 1
 
         fi
+
 
     fi
 

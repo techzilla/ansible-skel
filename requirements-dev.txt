@@ -1,3 +1,6 @@
 -r requirements.txt
 pre-commit
+pylint
+autopep8
+yamllint
 ansible-lint
