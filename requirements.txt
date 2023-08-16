@@ -1,1 +1,5 @@
-ansible
+ansible==7.5.0
+dnspython
+paramiko
+jmespath
+six

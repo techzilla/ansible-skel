@@ -1,9 +1,19 @@
 #!/bin/sh
 ##
-## FILE: bootstrap.sh
+## FILE: venv.sh
 ##
 
 VENV=".venv"
+ENVSH=".env.sh"
+
+PIPCONF=''
+
+load_env () {
+  set -a
+  # shellcheck source=/dev/null
+  [ -f "$ENVSH" ] && . "$ENVSH"
+  set +a
+}
 
 check_command() {
     if command -v "$1" >/dev/null 2>&1; then
@@ -31,6 +41,8 @@ venv_activate() {
     fi
 
 }
+
+load_env
 
 if check_command python3; then
     PYTHON="python3"
@@ -72,6 +84,8 @@ if ! venv_check; then
     if ! venv_activate; then
 
         if venv_create && venv_activate; then
+            echo "$PIPCONF" > "$VENV/pip.conf"
+
             "$PIP" install -U pip setuptools wheel
             "$PIP" install -r requirements.txt
 
@@ -84,7 +98,11 @@ if ! venv_check; then
         else
 
             echo "ERROR: venv failed"
-            return 1
+            if [ "$(basename "$0")" = "venv.sh" ]; then
+                exit 1
+            else
+                return 1
+            fi
 
         fi
 

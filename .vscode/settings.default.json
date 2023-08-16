@@ -1,0 +1,11 @@
+{
+    "ansible.python.activationScript": ".venv/bin/activate",
+    "ansible.ansibleLint.enabled": false,
+    "task.allowAutomaticTasks": "on",
+    "files.associations": {
+        "*.yaml": "yaml"
+    },
+    "python.analysis.extraPaths": [
+        "./ansible_collections"
+    ]
+}

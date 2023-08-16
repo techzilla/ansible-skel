@@ -9,21 +9,42 @@
     },
     "tasks": [
         {
-            "label": "Install Hooks",
-            "type": "shell",
-            "command": ". scripts/venv.sh && pre-commit install -f --install-hooks",
+            "label": "init",
             "problemMatcher": [],
             "runOptions": {
                 "runOn": "folderOpen"
             },
-            "dependsOn": [
-                "Init Python"
-            ]
+            "dependsOrder": "sequence",
+            "dependsOn": ["init:vscode", "init:python", "init:hooks","init:requirements"]
         },
         {
-            "label": "Init Python",
+            "label": "init:requirements",
+            "type": "shell",
+            "command": ". scripts/venv.sh && scripts/init_requirements.sh",
+            "problemMatcher": [],
+        },
+        {
+            "label": "init:hooks",
+            "type": "shell",
+            "command": ". scripts/venv.sh && scripts/init_pre-commit.sh",
+            "problemMatcher": []
+        },
+        {
+            "label": "init:python",
             "type": "shell",
             "command": "scripts/venv.sh",
+            "problemMatcher": []
+        },
+        {
+            "label": "init:vscode",
+            "type": "shell",
+            "command": "scripts/init_vscode.sh",
+            "problemMatcher": []
+        },
+        {
+            "label": "update:skel",
+            "type": "shell",
+            "command": "scripts/update_skel.sh",
             "problemMatcher": []
         }
     ]
